@@ -2,9 +2,16 @@
 # coding: utf-8
 
 # In[4]:
+'''
+    use comments wherver needed
+    using socket for image transmission
+    creating dataset
 
+'''
 import socket
 import cv2
+import numpy as np 
+
 def generate_dataset(img, id, img_id):
     cv2.imwrite(r"C:\Users\user\Desktop\data\user."+str(id)+"."+str(img_id)+".jpg",img)
     #cv2.imshow(r"C:\Users\user\Desktop\data\user."+str(id)+"."+str(img_id)+".jpg",img)
@@ -29,6 +36,7 @@ def draw_boundary(img, classifier, scaleFactor, minNeighbors, color, text):
         cv2.rectangle(img, (x,y),(x+w,y+h), color, 2)
         cv2.putText(img, text, (x, y-4), cv2.FONT_HERSHEY_SIMPLEX, 0.8, color, 1, cv2.LINE_AA)
         coords = [x,y,w,h]
+        print(coords)
     return coords
 # def recognize(img, clf, faceCascade):
 #     color={"blue":(255,0,0),"red":(0,0,255),"green":(0,255,0),"white":(255,255,255)}
@@ -37,7 +45,7 @@ def draw_boundary(img, classifier, scaleFactor, minNeighbors, color, text):
     
 def detect(img, faceCascade,eyeCascade,noseCascade,mouthCascade,img_id):
     color={"blue":(255,0,0),"red":(0,0,255),"green":(0,255,0),"white":(255,255,255)}
-    coords = draw_boundary(img, faceCascade, 1.1, 10, color['blue'],"Face")
+    coords = draw_boundary(img, faceCascade, 1.1, 10, color['green'],"Face")
     if len(coords)==4:
         
         roi_img = img[coords[1]:coords[1]+coords[3],coords[0]:coords[0]+coords[2]]
@@ -71,8 +79,6 @@ if cv2.waitKey(1) & 0xFF == ord('q'):
     video_capture.release()
     cv2.destroyAllWindows()
 
-
-# In[ ]:
 
 
 
