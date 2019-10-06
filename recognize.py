@@ -2,11 +2,15 @@
 # coding: utf-8
 
 # In[5]:
+'''
+	recognizing the user 
+'''
 import io
 import socket
 import struct
 import pickle
 import cv2
+import numpy as np 
 
 server_socket = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 server_socket.bind((socket.gethostname(),500))  # ADD IP HERE
